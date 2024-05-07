@@ -5,17 +5,17 @@ import MarkdownIt from 'markdown-it';
 const parser = new MarkdownIt();
 
 export async function GET(context) {
-    const muses = await getCollection("muses");
+    const music = await getCollection("music");
     return rss({
         stylesheet: '/rss/rss.xsl',
-        title: 'stoicopa',
+        title: 'music',
         description: 'My personal hamster wheel.',
         site: context.site,
-        items: muses.map((post) => ({
+        items: music.map((post) => ({
             title: post.data.title,
             pubDate: post.data.pubDate,
             description: post.data.description,
-            link: `/muses/${post.slug}/`,
+            link: `/music/${post.slug}/`,
             content: sanitizeHtml(parser.render(post.body)),
             ...post.data,
         })),

@@ -3,15 +3,15 @@ import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import BlogPost from "../components/BlogPost.astro";
 import { sortByDate } from "../components/sortbydate";
-const pageTitle = "Muses";
-const allMuses = await getCollection("muses");
+const pageTitle = "Music";
+const allMusic = await getCollection("music");
 ---
 
 <BaseLayout title={pageTitle} is404Page={false}>
       {
-        allMuses.sort(sortByDate).map((post) => (
+        allMusic.sort(sortByDate).map((post) => (
           <BlogPost
-              url={`/muses/${post.slug}/`}
+              url={`/music/${post.slug}/`}
               image={post.data?.image?.src || ''}
               alt={post.data?.image?.alt || ''}
               title={post.data?.title || ''}
