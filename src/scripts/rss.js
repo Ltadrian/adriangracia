@@ -1,5 +1,5 @@
 function handlePageLoad() {
-  const collections = ["/short_form/", "/long_form/", "/music/", "/zeitweillig/"];
+  const collections = ["/short_form/", "/long_form/", "/music/", "/photography/", "/zeitweillig/"];
   const currentPath = window.location.pathname;
   if (collections.includes(currentPath)) {
     const rssLink = document.getElementById('rss-link');
