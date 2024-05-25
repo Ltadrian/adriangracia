@@ -2,13 +2,7 @@
 import "../styles/MasonryLayout.css";
 import { getImage } from 'astro:assets';
 const { images } = Astro.props;
-// const { customImagesFunction } = Astro.props;
-// let imagesArray = []
-// if(customImagesFunction != null) {
-//   imagesArray = customImagesFunction()
-// } else {
-//   imagesArray = images
-// }
+
 
 const imageAssets = await Promise.all(images.map(async (image) => {
   if (image) {
