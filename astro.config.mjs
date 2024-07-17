@@ -10,7 +10,7 @@ import { remarkReadingTime } from './src/scripts/remark-reading-time.mjs';
 export default defineConfig({
   site: "https://adriangracia.me",
   image: {
-    domains: ["meta.adriangracia.me", "cdn.adriangracia.me", "dulce.adriangracia.me", "lax.adriangracia.me", "sfo.adriangracia.me"],
+    domains: ["meta.adriangracia.me", "cdn.adriangracia.me", "dulce.adriangracia.me", "lax.adriangracia.me", "sfo.adriangracia.me", "ord-70424.adriangracia.me"],
     service: {
       entrypoint: 'astro/assets/services/sharp',
       config: {
