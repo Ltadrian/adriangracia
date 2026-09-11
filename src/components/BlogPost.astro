@@ -1,7 +1,16 @@
 ---
 const { title, url, image, alt, description, pubDate, positionx, positiony } = Astro.props;
 import { Image } from "astro:assets";
-const publishedDate = pubDate.toDateString().split(" ").slice(1).join(" ");
+
+const formatDate = (date) => {
+  if (!date) return "";
+  const parsedDate = date instanceof Date ? date : new Date(date);
+  return Number.isNaN(parsedDate.getTime())
+    ? ""
+    : parsedDate.toDateString().split(" ").slice(1).join(" ");
+};
+
+const publishedDate = formatDate(pubDate);
 ---
 
 <div
