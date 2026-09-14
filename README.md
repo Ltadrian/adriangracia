@@ -30,6 +30,8 @@ Use Cloudflare Pages or Deno or [build a Docker image](/README.Docker.md), refer
 
 This site uses Astro's experimental incremental static builds. In Cloudflare Pages, enable **Build caching** (the V2 build system is required) and use `bun run build` with `dist` as the build output directory. Pages automatically restores Astro's `node_modules/.astro` cache and Bun's package cache between builds; without that restored Astro cache, every page is rendered again.
 
+Astro 7 requires Node.js `>=22.12.0`, so make sure the Pages build runs on Node 22: the repo's `.nvmrc` pins it (Cloudflare reads `.nvmrc`/`.node-version` automatically). If the build still reports an unsupported Node version, set a `NODE_VERSION` environment variable (e.g. `22.22.0`) in both the **Production** and **Preview** environments of the Pages project.
+
 Content-derived detail and tag pages provide stable cache keys, so Astro reuses their previous output unless the relevant content or its imported code has changed. Use `bun run build -- --force` when a full rebuild is required.
 
 ## How it all works
