@@ -17,6 +17,7 @@ export async function getStaticPaths() {
     return {
       params: { tag },
       props: { posts: filteredPosts },
+      cacheKey: filteredPosts.map((post) => `${post.id}:${post.digest}`).join("|"),
     };
   });
 }
@@ -28,6 +29,6 @@ const { posts } = Astro.props;
 <BaseLayout pageTitle={tag}>
   <p>Posts tagged with {tag}</p>
   <ul>
-      { posts.map((post) => <BlogPost url={`/music/${post.slug}/`} title={post.data.title} />) }
+      { posts.map((post) => <BlogPost url={`/music/${post.id}/`} title={post.data.title} />) }
   </ul>
 </BaseLayout>

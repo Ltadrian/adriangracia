@@ -15,7 +15,7 @@ export async function GET(context) {
             title: post.data.title,
             pubDate: post.data.pubDate,
             description: post.data.description,
-            link: `/authors/${post.slug}/`,
+            link: `/authors/${post.id}/`,
             content: sanitizeHtml(parser.render(post.body)),
             ...post.data,
         })),

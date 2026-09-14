@@ -26,7 +26,7 @@ for (let collection of collections) {
    return {
      imageSrc: imageAsset ? imageAsset.src : null,
      alt: post.data.image.alt,
-     url: `/${collection}/${post.slug}`
+     url: `/${collection}/${post.id}`
    };
  });
 

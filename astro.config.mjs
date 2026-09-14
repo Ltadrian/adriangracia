@@ -1,8 +1,10 @@
 import { defineConfig } from 'astro/config';
+import { unified } from '@astrojs/markdown-remark';
 import sitemap from "@astrojs/sitemap";
 import mdx from "@astrojs/mdx";
 import tailwind from "@astrojs/tailwind";
 import markdoc from "@astrojs/markdoc";
+import icon from "astro-icon";
 import remarkGfm from 'remark-gfm';
 import { remarkReadingTime } from './src/scripts/remark-reading-time.mjs';
 
@@ -18,7 +20,7 @@ export default defineConfig({
       },
     },
   },
-  integrations: [sitemap(), mdx({
+  integrations: [icon(), sitemap(), mdx({
     syntaxHighlight: 'shiki',
     shikiConfig: {
       theme: 'dracula'
@@ -26,14 +28,18 @@ export default defineConfig({
     gfm: false
   }), tailwind(), markdoc()],
   markdown: {
-    remarkPlugins: [remarkGfm, remarkReadingTime]
+    processor: unified({
+      remarkPlugins: [remarkGfm, remarkReadingTime],
+      gfm: false,
+    }),
   },
   prefetch: {
     prefetchAll: true,
     defaultStrategy: 'viewport'
   },
   experimental: {
-    clientPrerender: true
+    clientPrerender: true,
+    incrementalBuild: true,
     // directRenderScript: true
   },
 });
