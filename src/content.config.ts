@@ -27,6 +27,7 @@ const contentCollection = (directory: string) =>
 export const collections = {
   music: contentCollection("music"),
   photography: contentCollection("photography"),
+  film_photography: contentCollection("film_photography"),
   short_form: contentCollection("short_form"),
   long_form: contentCollection("long_form"),
   zeitweilig: contentCollection("zeitweilig"),
